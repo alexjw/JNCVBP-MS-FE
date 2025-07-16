@@ -7,7 +7,7 @@ import _ from "lodash";
 // export const API_URL = "http://localhost:3000/graphql";
 
 // For Deploy
-export const API_URL = process.env.API_URL || "http://localhost:3000/graphql";
+export const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/graphql";
 
 // Can be moved up to make the constants
 export const MODE_CREATE = "CREATE";

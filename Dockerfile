@@ -1,10 +1,15 @@
-# Build stage
-FROM node:21 AS builder
-WORKDIR /fe
+
+
+FROM node:18 AS builder
+WORKDIR '/fe'
 COPY package.json .
-#RUN npm ci
 RUN npm install --legacy-peer-deps  # todo fix dependencies
 COPY . .
+
+# Use build arg with default
+ARG REACT_APP_API_URL
+RUN echo "REACT_APP_API_URL=$REACT_APP_API_URL" > .env
+
 RUN npm run build
 
 # Production stage
