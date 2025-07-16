@@ -8,7 +8,8 @@ COPY . .
 
 # Use build arg with default
 ARG REACT_APP_API_URL
-RUN echo "REACT_APP_API_URL=$REACT_APP_API_URL" > .env
+# sets the default value only if the build arg isn’t provided.
+RUN echo "REACT_APP_API_URL=${REACT_APP_API_URL:-http://localhost:3000/graphql}" > .env
 
 RUN npm run build
 
